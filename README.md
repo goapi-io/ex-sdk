@@ -52,9 +52,7 @@ Run
 
 Example Params : 
 ```
-- SYMBOL = AAPL
-- INT_TIME = 1 (Max 240 - Recommended)
-- TIME = minute / hour
+- SYMBOL = BBCA
 - DATE_FROM = 2023-01-01
 - DATE_TO = 2023-08-01
 - API_KEY = _ZtJr4WeQpSKn******pHLQQN7_1jgR
