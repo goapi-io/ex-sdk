@@ -12,8 +12,8 @@ defmodule GoApi.Regional do
     get_api_params("regional/provinsi?api_key=#{@api_key}")
   end
 
-  def city do
-    get_api_params("regional/kota?api_key=#{@api_key}")
+  def city(province_id \\ "1") do
+    get_api_params("regional/kota?provinsi_id=#{province_id}&api_key=#{@api_key}")
   end
 
   def district do
