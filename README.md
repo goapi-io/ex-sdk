@@ -65,7 +65,7 @@ iex(1)> GoApi.Places.find("sumatra") # Default : jawa
 
 # Get regional data for Indonesia.
 iex(2)> GoApi.Regional.province  
-iex(3)> GoApi.Regional.city  
+iex(3)> GoApi.Regional.city("PROVINCE_ID" \\ "1") # Default : 1
 iex(4)> GoApi.Regional.district  
 iex(5)> GoApi.Regional.subdistrict
 
