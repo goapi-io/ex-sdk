@@ -28,19 +28,22 @@ end
 
 ## Configuration
 
-Add the following configuration variables in your `config/config.exs` file:
+Setup configuration variables in your `config/config.exs` file:
 
 ```elixir
-  config :go_api, GoApi,
-  cg_base_url: "https://api.goapi.id/v1/",
-  api_key: "YOUR_API_KEY",
-  print_url: false
-
+ config :go_api, GoApi,
+ cg_base_url: "https://api.goapi.io/",
+ api_key: [
+  stock: "YOUR_STOCK_API",
+  regional: "YOUR_REGIONAL_API",
+  places: "YOUR_PLACES_API"
+ ],
+ print_url: false #true for optional debugging
 ```
 
 Run
 
-```elixir
+```shell
 • mix deps.get
 • mix compile
 • iex -S mix run 
@@ -53,9 +56,14 @@ Run
 Example Params : 
 ```
 - SYMBOL = BBCA
+- DATE = 2023-10-30 # This date is a Period Date for Broker Summary and Indicator
+- LIMIT_PAGES # SET the LIMIT_PAGES for page you want to display as result, default was nil (Page 1)
 - DATE_FROM = 2023-01-01
 - DATE_TO = 2023-08-01
-- API_KEY = _ZtJr4WeQpSKn******pHLQQN7_1jgR
+- API_KEY :
+  - STOCK:  _ZtJr4WeQpSKn************,
+  - REGIONAL:  **********pHLQQN7_1jgR,
+  - PLACES:  _9MoS98Xn******iBhI983NJ3NhJ42
 ```
 
 Interactive Elixir (1.15.2) :
@@ -65,7 +73,7 @@ iex(1)> GoApi.Places.find("sumatra") # Default : jawa
 
 # Get regional data for Indonesia.
 iex(2)> GoApi.Regional.province  
-iex(3)> GoApi.Regional.city  
+iex(3)> GoApi.Regional.city("PROVINCE_ID" \\ "1") # Default : 1
 iex(4)> GoApi.Regional.district  
 iex(5)> GoApi.Regional.subdistrict
 
@@ -78,8 +86,10 @@ iex(10)> GoApi.Idx.stock_prices("SYMBOL_LIST" \\ "BBRI,BBCA") # Default: BBRI / 
 iex(11)> GoApi.Idx.trending_stocks
 iex(12)> GoApi.Idx.top_gainers
 iex(13)> GoApi.Idx.top_losers
-iex(14)> GoApi.Idx.historical_stock_data(%{"symbol" => symbol, "date_from" => date_from, "date_to" => date_to} \\ %{"symbol" => "BBCA", "date_from" => "2023-01-01", "date_to" => "2023-03-01"}) # Struct Format, Default Symbol: BBCA, From: 2023-01-01, To: 2023-03-01, (Date Format)
-iex(15)> GoApi.Idx.broker_summary(%{"symbol" => symbol, "date_from" => date_from, "date_to" => date_to} \\ %{"symbol" => "BBCA", "date_from" => "2023-01-01", "date_to" => "2023-03-01"}) # Struct Format, Default Symbol: BBCA, From: 2023-01-01, To: 2023-03-01, (Date Format)
+iex(14)> GoApi.Idx.historical_stock_data(%{"symbol" => symbol, "date_from" => date_from, "date_to" => date_to} \\ %{"symbol" => "BBCA", "date_from" => "2023-01-01", "date_to" => "2023-03-01"}) # Struct Format, Default Symbol: BBCA, From: 2023-01-01, To: 2023-03-01, (Date Format: YYYY-MM-DD)
+iex(15)> GoApi.Idx.e_ipo
+iex(16)> GoApi.Idx.broker_summary(%{"symbol" => symbol, "date" => date} \\ %{"symbol" => "BBCA", "date" => "2023-10-30"}) # Struct Format, Default Symbol: BBCA, Date Period: 2023-10-30 (Date Format: YYYY-MM-DD)
+iex(17)> GoApi.Idx.indicators(%{"limit_page" => limit_pages, "date" => date} \\ %{"limit_page" => "", "date" => ""}) #Showing some techincal indikator, Default limit Page: 1, Set Date for Specific Period
 ```
 
 
