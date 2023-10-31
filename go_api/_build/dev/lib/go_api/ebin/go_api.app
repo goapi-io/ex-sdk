@@ -3,7 +3,7 @@
          [{go_api,
               ['Elixir.GoApi'],
               {ok,[{cg_base_url,<<"https://api.goapi.id/v1/">>},
-                   {api_key,<<"rdWWN7LWI9JNTNOu7KeHSu7fupBSXI">>},
+                   {api_key,<<"YOUR_API_KEY">>},
                    {print_url,false}]}},
           {go_api,['Elixir.GoApiWeb.Gettext'],error}]},
      {optional_applications,[]},
