@@ -1,17 +1,24 @@
 defmodule GoApi.Conf do
 
   @cg_base_url Application.compile_env(:go_api, GoApi)[:cg_base_url]
-  @api_key Application.compile_env(:go_api, GoApi)[:api_key]
+  @api_key_stock Application.compile_env(:go_api, GoApi)[:api_key][:stock]
+  @api_key_regional Application.compile_env(:go_api, GoApi)[:api_key][:regional]
+  @api_key_places Application.compile_env(:go_api, GoApi)[:api_key][:places]
+
   @print_url Application.compile_env(:go_api, GoApi)[:print_url]
 
   def cg_base_url() do
     @cg_base_url
   end
-
-  def api_key() do
-    @api_key
+  def api_key_stock() do
+    @api_key_stock
   end
-
+  def api_key_regional() do
+    @api_key_regional
+  end
+  def api_key_places() do
+    @api_key_places
+  end
   def print_url() do
     @print_url
   end
