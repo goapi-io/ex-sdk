@@ -27,9 +27,13 @@ config :phoenix, :json_library, Jason
 
 # Setting UP url & APIKEY
 config :go_api, GoApi,
-  cg_base_url: "https://api.goapi.id/v1/",
-  api_key: "YOUR_API_KEY",
-  print_url: false
+ cg_base_url: "https://api.goapi.io/",
+ api_key: [
+  stock: "YOUR_STOCK_API",
+  regional: "YOUR_REGIONAL_API",
+  places: "YOUR_PLACES_API"
+ ],
+ print_url: false #true for optional debugging
 
 
 
