@@ -12,16 +12,16 @@ defmodule GoApi.Regional do
     get_api_params("regional/provinsi?api_key=#{@api_key}")
   end
 
-  def city(province_id \\ "1") do
+  def city(province_id \\ 1) do
     get_api_params("regional/kota?provinsi_id=#{province_id}&api_key=#{@api_key}")
   end
 
-  def district do
-    get_api_params("regional/kecamatan?api_key=#{@api_key}")
+  def district(city_id \\ 11.01) do
+    get_api_params("regional/kecamatan?kota_id=#{city_id}&api_key=#{@api_key}")
   end
 
-  def subdistrict do
-    get_api_params("regional/kelurahan?api_key=#{@api_key}")
+  def sub_district(district_id \\ "11.01.01") do
+    get_api_params("regional/kelurahan?kecamatan_id=#{district_id}&api_key=#{@api_key}")
   end
 
 
