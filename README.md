@@ -50,12 +50,22 @@ Run
 • iex -S mix run 
 ```
 
+Config Notifier :
+```shell
+1. {:error, "cg_base_url is missing or empty in the config"}
+2. {:error, "api_key_regional is missing or empty in the config"}
+3. {:error, "api_key_places is missing or empty in the config"}
+4. {:error, "api_key_stock is missing or empty in the config"}
+5. {:error, "spv_speed is missing or less than or equal to 0 in the config"}
+6. {:info, "print_url is active in the config"}
+```
+
 
 ## Usage
 
 
 Example Params : 
-```
+```elixir
 - SYMBOL = BBCA
 - DATE = 2023-10-30 # This date is a Period Date for Broker Summary and Indicator
 - LIMIT_PAGES # SET the LIMIT_PAGES for page you want to display as result, default was nil (Page 1)
@@ -66,6 +76,8 @@ Example Params :
   - REGIONAL:  **********pHLQQN7_1jgR,
   - PLACES:  _9MoS98Xn******iBhI983NJ3NhJ42
 ```
+
+
 
 Interactive Elixir (1.15.2) :
 ```shell
