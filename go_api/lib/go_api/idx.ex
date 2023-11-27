@@ -19,6 +19,14 @@ defmodule GoApi.Idx do
     get_api_params("stock/idx/index/#{symbol}/items?&api_key=#{@api_key_stock}")
   end
 
+  def company_profiles(symbol \\ "BBCA") do
+    get_api_params("stock/idx/#{symbol}/profile?&api_key=#{@api_key_stock}")
+  end
+
+  #use commas for multiple prices Example: BBRI,BBCA
+  def prices(symbol \\ "BBCA") do
+    get_api_params("stock/idx/prices?symbols=#{symbol}&api_key=#{@api_key_stock}")
+  end
 
   def emitent_detail(emitent_symbol \\ "BMRI") do
     get_api_params("stock/idx/#{emitent_symbol}/profile?api_key=#{@api_key_stock}")
@@ -29,7 +37,7 @@ defmodule GoApi.Idx do
     get_api_params("stock/idx/prices?symbols=#{symbol_list}&api_key=#{@api_key_stock}")
   end
 
-  def trending_stocks do
+  def trending do
     get_api_params("stock/idx/trending?api_key=#{@api_key_stock}")
   end
 

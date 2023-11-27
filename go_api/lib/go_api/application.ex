@@ -8,6 +8,7 @@ defmodule GoApi.Application do
   @impl true
   def start(_type, _args) do
     children = [
+      {GoApi.Spv, []},
       # Start the Telemetry supervisor
       GoApiWeb.Telemetry,
       # Start the PubSub system

@@ -27,13 +27,14 @@ config :phoenix, :json_library, Jason
 
 # Setting UP url & APIKEY
 config :go_api, GoApi,
-  cg_base_url: "https://api.goapi.io/",
- api_key: [
-  stock: "YOUR_STOCK_API",
-  regional: "YOUR_REGIONAL_API",
-  places: "YOUR_PLACES_API"
+cg_base_url: "",
+api_key: [
+  stock: "",
+  regional: "",
+  places: ""
  ],
- print_url: false #true for optional debugging
+ spv_speed: 0, #milisecond 5000 -> 5 seconds, supervisor speed
+ print_url: true #true for optional debugging
 
 
 
