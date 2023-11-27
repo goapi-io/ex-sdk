@@ -38,6 +38,7 @@ Setup configuration variables in your `config/config.exs` file:
   regional: "YOUR_REGIONAL_API",
   places: "YOUR_PLACES_API"
  ],
+ spv_speed: 5000, #milisecond 5000 -> 5 seconds, supervisor speed
  print_url: false #true for optional debugging
 ```
 
@@ -77,19 +78,31 @@ iex(3)> GoApi.Regional.city("PROVINCE_ID" \\ "1") # Default : 1
 iex(4)> GoApi.Regional.district  
 iex(5)> GoApi.Regional.subdistrict
 
-# Get data for companies listed on IDX (Indonesia Stock Exchange).  
+-- Snapshot --
+# Get data (Snapshot) for companies listed on IDX (Indonesia Stock Exchange).  
 iex(6)> GoApi.Idx.companies
 iex(7)> GoApi.Idx.indices    
 iex(8)> GoApi.Idx.index_items("SYMBOL" \\ "MNC36") # Default: MNC36
-iex(9)> GoApi.Idx.emitent_detail("EMITEN_SYMBOL" \\ "BMRI")  # Default: BMRI
-iex(10)> GoApi.Idx.stock_prices("SYMBOL_LIST" \\ "BBRI,BBCA") # Default: BBRI / BBRI, BBCA. Separate emitters with commas to search for multiple emitters.
-iex(11)> GoApi.Idx.trending_stocks
-iex(12)> GoApi.Idx.top_gainers
-iex(13)> GoApi.Idx.top_losers
-iex(14)> GoApi.Idx.historical_stock_data(%{"symbol" => symbol, "date_from" => date_from, "date_to" => date_to} \\ %{"symbol" => "BBCA", "date_from" => "2023-01-01", "date_to" => "2023-03-01"}) # Struct Format, Default Symbol: BBCA, From: 2023-01-01, To: 2023-03-01, (Date Format: YYYY-MM-DD)
-iex(15)> GoApi.Idx.e_ipo
-iex(16)> GoApi.Idx.broker_summary(%{"symbol" => symbol, "date" => date} \\ %{"symbol" => "BBCA", "date" => "2023-10-30"}) # Struct Format, Default Symbol: BBCA, Date Period: 2023-10-30 (Date Format: YYYY-MM-DD)
-iex(17)> GoApi.Idx.indicators(%{"limit_page" => limit_pages, "date" => date} \\ %{"limit_page" => "", "date" => ""}) #Showing some techincal indikator, Default limit Page: 1, Set Date for Specific Period
+iex(9)> GoApi.Idx.company_profiles("SYMBOL" \\ "BBCA") # Default: BBCA
+iex(10)> GoApi.Idx.emitent_detail("EMITEN_SYMBOL" \\ "BMRI")  # Default: BMRI
+iex(11)> GoApi.Idx.prices("SYMBOL_LIST" \\ "BBRI,BBCA") # Default: BBRI / BBRI, BBCA. Separate emitters with commas to search for multiple emitters.
+iex(12)> GoApi.Idx.trending
+iex(13)> GoApi.Idx.top_gainers
+iex(14)> GoApi.Idx.top_losers
+iex(15)> GoApi.Idx.historical_stock_data(%{"symbol" => symbol, "date_from" => date_from, "date_to" => date_to} \\ %{"symbol" => "BBCA", "date_from" => "2023-01-01", "date_to" => "2023-03-01"}) # Struct Format, Default Symbol: BBCA, From: 2023-01-01, To: 2023-03-01, (Date Format: YYYY-MM-DD)
+iex(16)> GoApi.Idx.e_ipo
+iex(17)> GoApi.Idx.broker_summary(%{"symbol" => symbol, "date" => date} \\ %{"symbol" => "BBCA", "date" => "2023-10-30"}) # Struct Format, Default Symbol: BBCA, Date Period: 2023-10-30 (Date Format: YYYY-MM-DD)
+iex(18)> GoApi.Idx.indicators(%{"limit_page" => limit_pages, "date" => date} \\ %{"limit_page" => "", "date" => ""}) #Showing some techincal indikator, Default limit Page: 1, Set Date for Specific Period
+
+-- Realtime --
+#Get Data by Realtime
+iex(19)> GoApi.Spv.e_ipo(%{})
+iex(20)> GoApi.Spv.trending(%{})
+iex(21)> GoApi.Spv.top_gainers(%{})
+iex(22)> GoApi.Spv.top_losers(%{})
+iex(23)> GoApi.Spv.companies(%{})
+iex(24)> GoApi.Spv.indices(%{})
+
 ```
 
 
