@@ -32,11 +32,6 @@ defmodule GoApi.Idx do
     get_api_params("stock/idx/#{emitent_symbol}/profile?api_key=#{@api_key_stock}")
   end
 
-
-  def stock_prices(symbol_list \\ "BBRI,BBCA") do
-    get_api_params("stock/idx/prices?symbols=#{symbol_list}&api_key=#{@api_key_stock}")
-  end
-
   def trending do
     get_api_params("stock/idx/trending?api_key=#{@api_key_stock}")
   end
