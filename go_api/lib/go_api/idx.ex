@@ -57,7 +57,10 @@ defmodule GoApi.Idx do
   end
 
   def indicators(%{"limit_page" => limit_pages, "date" => date} \\ %{"limit_page" => "", "date" => ""}) do
-  get_api_params("stock/idx/indicators?page=#{limit_pages}&date=#{date}&api_key=#{@api_key_stock}")
+   get_api_params("stock/idx/indicators?page=#{limit_pages}&date=#{date}&api_key=#{@api_key_stock}")
   end
 
+  def news(%{"page" => page, "symbol" => symbol} \\ %{"page" => "1", "symbol" => "BBCA"}) do
+   get_api_params("stock/idx/news?page=#{page}&symbol=#{symbol}&api_key=#{@api_key_stock}")
+  end
 end
