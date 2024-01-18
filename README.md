@@ -68,7 +68,7 @@ Example Params :
 ```elixir
 - SYMBOL = BBCA
 - DATE = 2023-10-30 # This date is a Period Date for Broker Summary and Indicator
-- LIMIT_PAGES # SET the LIMIT_PAGES for page you want to display as result, default was nil (Page 1)
+- LIMIT_PAGES # SET the LIMIT_PAGES for the page you want to display as a result, default was nil (Page 1)
 - DATE_FROM = 2023-01-01
 - DATE_TO = 2023-08-01
 - API_KEY :
@@ -104,7 +104,8 @@ iex(14)> GoApi.Idx.top_losers
 iex(15)> GoApi.Idx.historical_stock_data(%{"symbol" => symbol, "date_from" => date_from, "date_to" => date_to} \\ %{"symbol" => "BBCA", "date_from" => "2023-01-01", "date_to" => "2023-03-01"}) # Struct Format, Default Symbol: BBCA, From: 2023-01-01, To: 2023-03-01, (Date Format: YYYY-MM-DD)
 iex(16)> GoApi.Idx.e_ipo
 iex(17)> GoApi.Idx.broker_summary(%{"symbol" => symbol, "date" => date} \\ %{"symbol" => "BBCA", "date" => "2023-10-30"}) # Struct Format, Default Symbol: BBCA, Date Period: 2023-10-30 (Date Format: YYYY-MM-DD)
-iex(18)> GoApi.Idx.indicators(%{"limit_page" => limit_pages, "date" => date} \\ %{"limit_page" => "", "date" => ""}) #Showing some techincal indikator, Default limit Page: 1, Set Date for Specific Period
+iex(18)> GoApi.Idx.indicators(%{"limit_page" => limit_pages, "date" => date} \\ %{"limit_page" => "", "date" => ""}) #Showing some techincal indicator, Default limit Page: 1, Set Date for Specific Period
+iex(19)> GoApi.Idx.news(%{"page" => page, "symbol" => symbol} \\ %{"page" => "1", "symbol" => "BBCA"}) #News Stock and Investations, Default limit Page: 1 (if Empty) - Limit Per Page = 100, Set Symbol For Specific Emiten
 
 -- Realtime --
 #Get Data by Realtime
